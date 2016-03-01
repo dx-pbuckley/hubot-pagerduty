@@ -31,13 +31,13 @@ seen_incidents = { }
 zeropad = (number) ->
   return ("0" + number).slice(-2)
 
-# this is seriously some ghetto shit. if someone else knows how to make it
-# better, please do. -erikh
-getTextDate = (date) ->
+getTextDateTime = (date) ->
   month = date.getMonth() + 1
   day = date.getDate()
   year = date.getFullYear()
-  return "#{year}-#{zeropad(month)}-#{zeropad(day)}"
+  hour = date.getHours()
+  minute = date.getMinutes()
+  return "#{year}-#{zeropad(month)}-#{zeropad(day)}T#{zeropad(hour)}:#{zeropad(minute)}:00"
 
 # more ghetto shit -erikh
 getUTCTextTime = (date) ->
@@ -78,8 +78,8 @@ getFetcher = (schedule, func) ->
     msg
       .http("https://#{subdomain}.pagerduty.com/api/v1/schedules/"+schedule_id+"/entries")
       .query
-        since: getTextDate(today)
-        until: getTextDate(tomorrow)
+        since: getTextDateTime(today)
+        until: getTextDateTime(tomorrow)
       .headers
         "Content-type": "application/json"
         "Authorization": "Token token=" + token
@@ -272,7 +272,7 @@ module.exports = (robot) ->
   robot.respond /oncall/i, (msg) ->
     today = new Date()
     tomorrow = new Date(today.getTime() + 86400000)
-    msg.send "Oncall schedule for #{getTextDate(today)} - #{getTextDate(tomorrow)}:"
+    msg.send "Schedule for #{getTextDateTime(today)} - #{getTextDateTime(tomorrow)}:"
     # make an attempt to do this synchronously
     sync_call = null
     for schedule in schedules.reverse()
