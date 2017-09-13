@@ -1,5 +1,5 @@
 {
-  "name": "hubot-pagerduty",
+  "name": "hubot-pagerduty-pb",
   "description": "Hubot script. Interacts/integrates with PagerDuty API.",
   "version": "0.0.3",
   "author": "Hotel Tonight, forked and modified by buckmeisterq@gmail.com",
