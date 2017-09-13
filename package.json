@@ -1,24 +1,31 @@
 {
   "name": "hubot-pagerduty",
-  "version": "0.0.2",
-  "description": "PagerDuty API Integration for Hubot",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "description": "Hubot script. Interacts/integrates with PagerDuty API.",
+  "version": "0.0.3",
+  "author": "Hotel Tonight, forked and modified by buckmeisterq@gmail.com",
+  "license": "MIT",
+
+  "keywords": "hubot, hubot-scripts, pagerduty",
+
   "repository": {
     "type": "git",
-    "url": "http://github.com/hoteltonight/hubot-pagerduty.git"
+    "url": "git://github.com/dx-pbuckley/hubot-pagerduty.git"
   },
-  "keywords": [
-    "hubot",
-    "pagerduty"
-  ],
-  "directories": {
-    "lib": "./src"
+
+  "bugs": {
+    "url": "https://github.com/dx-pbuckley/hubot-pagerduty/issues"
   },
+
   "dependencies": {
+  },
+
+  "peerDependencies": {
     "hubot": ">= 2.3.0"
   },
-  "author": "Hotel Tonight",
-  "license": "MIT"
+
+  "main": "index.coffee",
+
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
 }
